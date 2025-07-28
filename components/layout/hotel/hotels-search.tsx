@@ -164,20 +164,23 @@ export function HotelsSearch() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-3">Search Hotels</h1>
-        <p className="text-gray-600 text-lg">
+    <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-0">
+      {/* Header */}
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">
+          Search Hotels
+        </h1>
+        <p className="text-gray-600 text-base sm:text-lg">
           Find and book the perfect accommodation for your stay
         </p>
       </div>
 
       {/* Search Form */}
-      <Card className="mb-8 border-gray-200">
-        <CardContent className="p-8">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-6">
-            <div>
-              <label className="block text-sm font-semibold mb-3 text-gray-900">
+      <Card className="mb-6 sm:mb-8 border-gray-200">
+        <CardContent className="p-4 sm:p-6 lg:p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mb-4 sm:mb-6">
+            <div className="sm:col-span-2 lg:col-span-1">
+              <label className="block text-sm font-semibold mb-2 sm:mb-3 text-gray-900">
                 Destination
               </label>
               <div className="relative">
@@ -190,13 +193,13 @@ export function HotelsSearch() {
                       destination: e.target.value,
                     }))
                   }
-                  className="h-12 pl-10"
+                  className="h-10 sm:h-12 pl-10"
                 />
                 <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-3 text-gray-900">
+              <label className="block text-sm font-semibold mb-2 sm:mb-3 text-gray-900">
                 Check-in
               </label>
               <div className="relative">
@@ -209,14 +212,14 @@ export function HotelsSearch() {
                       checkIn: e.target.value,
                     }))
                   }
-                  className="h-12 pl-10"
+                  className="h-10 sm:h-12 pl-10"
                   min={new Date().toISOString().split('T')[0]}
                 />
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-3 text-gray-900">
+              <label className="block text-sm font-semibold mb-2 sm:mb-3 text-gray-900">
                 Check-out
               </label>
               <div className="relative">
@@ -229,7 +232,7 @@ export function HotelsSearch() {
                       checkOut: e.target.value,
                     }))
                   }
-                  className="h-12 pl-10"
+                  className="h-10 sm:h-12 pl-10"
                   min={
                     searchParams.checkIn ||
                     new Date().toISOString().split('T')[0]
@@ -239,7 +242,7 @@ export function HotelsSearch() {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-3 text-gray-900">
+              <label className="block text-sm font-semibold mb-2 sm:mb-3 text-gray-900">
                 Guests
               </label>
               <div className="relative">
@@ -252,7 +255,7 @@ export function HotelsSearch() {
                     }))
                   }
                 >
-                  <SelectTrigger className="h-12 pl-10">
+                  <SelectTrigger className="h-10 sm:h-12 pl-10">
                     <SelectValue placeholder="2 Guests" />
                   </SelectTrigger>
                   <SelectContent>
@@ -266,7 +269,7 @@ export function HotelsSearch() {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-3 text-gray-900">
+              <label className="block text-sm font-semibold mb-2 sm:mb-3 text-gray-900">
                 Rooms
               </label>
               <Select
@@ -278,7 +281,7 @@ export function HotelsSearch() {
                   }))
                 }
               >
-                <SelectTrigger className="h-12">
+                <SelectTrigger className="h-10 sm:h-12">
                   <SelectValue placeholder="1 Room" />
                 </SelectTrigger>
                 <SelectContent>
@@ -289,21 +292,21 @@ export function HotelsSearch() {
               </Select>
             </div>
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button
-              className="bg-blue-600 hover:bg-blue-700 px-8 py-3 h-12"
+              className="bg-blue-600 hover:bg-blue-700 px-6 sm:px-8 py-2 sm:py-3 h-10 sm:h-12 w-full sm:w-auto"
               onClick={handleSearch}
               disabled={searchMutation.isPending}
             >
-              <Search className="w-5 h-5 mr-2" />
+              <Search className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
               {searchMutation.isPending ? 'Searching...' : 'Search Hotels'}
             </Button>
             <Button
               variant="outline"
-              className="px-8 py-3 h-12 bg-transparent"
+              className="px-6 sm:px-8 py-2 sm:py-3 h-10 sm:h-12 bg-transparent w-full sm:w-auto"
               onClick={() => setShowFilters(!showFilters)}
             >
-              <Sliders className="w-5 h-5 mr-2" />
+              <Sliders className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
               Filters{' '}
               {appliedFilters.length > 0 && `(${appliedFilters.length})`}
             </Button>
@@ -311,13 +314,13 @@ export function HotelsSearch() {
         </CardContent>
       </Card>
 
-      <div className="flex gap-8">
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
         {/* Filters Sidebar */}
         {showFilters && (
-          <div className="w-80 flex-shrink-0">
-            <Card className="sticky top-4">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-6">
+          <div className="w-full lg:w-80 lg:flex-shrink-0">
+            <Card className="lg:sticky lg:top-4">
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
                   <h3 className="text-lg font-semibold">Filters</h3>
                   {appliedFilters.length > 0 && (
                     <Button variant="ghost" size="sm" onClick={clearAllFilters}>
@@ -328,7 +331,7 @@ export function HotelsSearch() {
 
                 {/* Applied Filters */}
                 {appliedFilters.length > 0 && (
-                  <div className="mb-6">
+                  <div className="mb-4 sm:mb-6">
                     <h4 className="text-sm font-medium mb-3">
                       Applied Filters
                     </h4>
@@ -351,7 +354,7 @@ export function HotelsSearch() {
                 )}
 
                 {/* Filter Categories */}
-                <div className="space-y-6 max-h-96 overflow-y-auto">
+                <div className="space-y-4 sm:space-y-6 max-h-80 sm:max-h-96 overflow-y-auto">
                   {hotelFilters
                     .filter((filter) =>
                       ['price', 'class', 'popular', 'hotelfacility'].includes(
@@ -405,7 +408,7 @@ export function HotelsSearch() {
                               </div>
                             </div>
                           ) : (
-                            <div className="space-y-2 max-h-48 overflow-y-auto">
+                            <div className="space-y-2 max-h-40 sm:max-h-48 overflow-y-auto">
                               {filter.options.slice(0, 10).map((option) => (
                                 <div
                                   key={option.genericId}
@@ -447,10 +450,10 @@ export function HotelsSearch() {
 
         {/* Results Section */}
         <div className="flex-1">
-         
+          {/* Results Header */}
           {searchResults.length > 0 && (
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-semibold">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
+              <h2 className="text-xl sm:text-2xl font-semibold">
                 Available Hotels ({searchResults.length})
               </h2>
               <div className="flex gap-3">
@@ -460,7 +463,7 @@ export function HotelsSearch() {
                     setSearchParams((prev) => ({ ...prev, sortBy: value }))
                   }
                 >
-                  <SelectTrigger className="w-48">
+                  <SelectTrigger className="w-full sm:w-48">
                     <SelectValue placeholder="Sort by" />
                   </SelectTrigger>
                   <SelectContent>
@@ -476,28 +479,28 @@ export function HotelsSearch() {
           )}
 
           {/* Hotel Results */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {searchResults.map((hotel) => (
               <Card
                 key={hotel.id}
                 className="hover:shadow-lg transition-shadow border-gray-200"
               >
                 <CardContent className="p-0">
-                  <div className="flex">
+                  <div className="flex flex-col sm:flex-row">
                     {/* Hotel Image */}
-                    <div className="w-80 h-64 flex-shrink-0">
+                    <div className="w-full sm:w-80 h-48 sm:h-64 flex-shrink-0">
                       <img
                         src={hotel.image || '/placeholder.svg'}
                         alt={hotel.name}
-                        className="w-full h-full object-cover rounded-l-lg"
+                        className="w-full h-full object-cover sm:rounded-l-lg rounded-t-lg sm:rounded-t-none"
                       />
                     </div>
 
                     {/* Hotel Details */}
-                    <div className="flex-1 p-8">
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <h3 className="text-xl font-semibold mb-2">
+                    <div className="flex-1 p-4 sm:p-6 lg:p-8">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-4">
+                        <div className="flex-1">
+                          <h3 className="text-lg sm:text-xl font-semibold mb-2">
                             {hotel.name}
                           </h3>
                           <div className="flex items-center gap-2 mb-2">
@@ -505,7 +508,7 @@ export function HotelsSearch() {
                               {[...Array(5)].map((_, i) => (
                                 <Star
                                   key={i}
-                                  className={`w-4 h-4 ${
+                                  className={`w-3 sm:w-4 h-3 sm:h-4 ${
                                     i < Math.floor(hotel.rating)
                                       ? 'text-yellow-400 fill-current'
                                       : 'text-gray-300'
@@ -513,30 +516,30 @@ export function HotelsSearch() {
                                 />
                               ))}
                             </div>
-                            <span className="text-sm text-gray-600">
+                            <span className="text-xs sm:text-sm text-gray-600">
                               {hotel.rating} ({hotel.reviews} reviews)
                             </span>
                           </div>
-                          <p className="text-gray-600 text-sm mb-4">
+                          <p className="text-gray-600 text-xs sm:text-sm mb-4">
                             {hotel.address}
                           </p>
                         </div>
-                        <div className="text-right">
-                          <div className="text-right mb-2">
+                        <div className="text-right sm:text-right">
+                          <div className="mb-2">
                             {hotel.originalPrice && (
-                              <div className="text-sm text-gray-500 line-through">
+                              <div className="text-xs sm:text-sm text-gray-500 line-through">
                                 {hotel.originalPrice}
                               </div>
                             )}
-                            <div className="text-2xl font-bold text-blue-600">
+                            <div className="text-xl sm:text-2xl font-bold text-blue-600">
                               {hotel.price}
                             </div>
-                            <div className="text-sm text-gray-600">
+                            <div className="text-xs sm:text-sm text-gray-600">
                               {hotel.nights}
                             </div>
                           </div>
                           <Button
-                            className="bg-blue-600 hover:bg-blue-700 px-6 py-2"
+                            className="bg-blue-600 hover:bg-blue-700 px-4 sm:px-6 py-2 text-sm w-full sm:w-auto"
                             onClick={() => handleAddToItinerary(hotel)}
                           >
                             Add to Itinerary
@@ -544,7 +547,7 @@ export function HotelsSearch() {
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
                         {hotel.facilities.map((facility, index) => (
                           <Badge
                             key={index}
@@ -556,7 +559,7 @@ export function HotelsSearch() {
                         ))}
                       </div>
 
-                      <div className="text-sm text-gray-600">
+                      <div className="text-xs sm:text-sm text-gray-600">
                         <span className="font-medium">Room type:</span>{' '}
                         {hotel.roomType}
                       </div>
@@ -569,8 +572,8 @@ export function HotelsSearch() {
 
           {/* No results message */}
           {searchResults.length === 0 && !searchMutation.isPending && (
-            <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">
+            <div className="text-center py-8 sm:py-12">
+              <p className="text-gray-500 text-base sm:text-lg">
                 Search for hotels to see results here
               </p>
             </div>
@@ -578,9 +581,11 @@ export function HotelsSearch() {
 
           {/* Loading State */}
           {searchMutation.isPending && (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-              <p className="text-gray-500 text-lg">Searching for hotels...</p>
+            <div className="text-center py-8 sm:py-12">
+              <div className="animate-spin rounded-full h-8 sm:h-12 w-8 sm:w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <p className="text-gray-500 text-base sm:text-lg">
+                Searching for hotels...
+              </p>
             </div>
           )}
         </div>

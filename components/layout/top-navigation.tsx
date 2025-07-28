@@ -13,7 +13,6 @@ import {
 } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { SidebarTrigger } from '@/components/ui/sidebar'
 import Image from 'next/image'
 
 export function TopNavigation() {
@@ -21,9 +20,8 @@ export function TopNavigation() {
     <header className="bg-white border-b border-gray-200 w-full sticky top-0 z-50">
       <div className="px-3 sm:px-6 py-3">
         <div className="flex items-center justify-between lg:justify-evenly gap-4">
-          {/* Mobile sidebar trigger and Logo */}
+          {/* Logo and Search */}
           <div className="flex items-center gap-3 lg:gap-6">
-            <SidebarTrigger className="lg:hidden" />
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-[3px] flex items-center justify-center">
                 <Image
@@ -35,13 +33,23 @@ export function TopNavigation() {
                 />
               </div>
             </div>
-
             {/* Search - Hidden on mobile */}
             <div className="relative hidden sm:block">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
                 placeholder="Search"
                 className="pl-10 w-48 lg:w-72 bg-gray-50 border-gray-200 focus:bg-white h-9"
+              />
+            </div>
+          </div>
+
+          {/* Mobile Search Bar - Shows below header on mobile */}
+          <div className="sm:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 p-3">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Input
+                placeholder="Search"
+                className="pl-10 w-full bg-gray-50 border-gray-200 focus:bg-white h-9"
               />
             </div>
           </div>
@@ -66,7 +74,6 @@ export function TopNavigation() {
                 className="text-gray-600 hover:text-gray-900 h-9 px-3"
               >
                 Dashboard
-                  
               </Button>
             </div>
             <div className="flex flex-col items-center">
@@ -109,44 +116,50 @@ export function TopNavigation() {
             <Button className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium h-9 text-sm">
               Subscribe
             </Button>
-
             <div className="flex items-center gap-2 sm:gap-4 lg:gap-7">
-              {/* Notification */}
-              <div className="flex flex-col items-center">
-                <Bell className="w-4 h-4" />
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="relative text-gray-600 hover:text-gray-900 h-9 w-9 hidden sm:flex"
-                >
-                  <span className="sr-only sm:not-sr-only text-xs">
+              {/* Mobile: Show only icons, Desktop: Show icons with labels */}
+              <div className="flex items-center gap-2 sm:gap-4">
+                {/* Notification */}
+                <div className="flex flex-col items-center">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="relative text-gray-600 hover:text-gray-900 h-8 w-8 sm:h-9 sm:w-9"
+                  >
+                    <Bell className="w-4 h-4" />
+                  </Button>
+                  <span className="hidden sm:block text-xs text-gray-600">
                     Notification
                   </span>
-                </Button>
-              </div>
+                </div>
 
-              {/* Cart */}
-              <div className="flex flex-col items-center">
-                <ShoppingCart className="w-4 h-4" />
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="relative text-gray-600 hover:text-gray-900 h-9 w-9 hidden sm:flex"
-                >
-                  <span className="sr-only sm:not-sr-only text-xs">Carts</span>
-                </Button>
-              </div>
+                {/* Cart */}
+                <div className="flex flex-col items-center">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="relative text-gray-600 hover:text-gray-900 h-8 w-8 sm:h-9 sm:w-9"
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                  </Button>
+                  <span className="hidden sm:block text-xs text-gray-600">
+                    Carts
+                  </span>
+                </div>
 
-              {/* Create */}
-              <div className="flex flex-col items-center">
-                <Plus className="w-4 h-4" />
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="relative text-gray-600 hover:text-gray-900 h-9 w-9 hidden sm:flex"
-                >
-                  <span className="sr-only sm:not-sr-only text-xs">Create</span>
-                </Button>
+                {/* Create */}
+                <div className="flex flex-col items-center">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="relative text-gray-600 hover:text-gray-900 h-8 w-8 sm:h-9 sm:w-9"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </Button>
+                  <span className="hidden sm:block text-xs text-gray-600">
+                    Create
+                  </span>
+                </div>
               </div>
 
               {/* Profile */}
